@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: ORDER-SERVICE
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/orderdb
+      host: localhost
+      port: 27017
+      database: orderdb
+      repositories:
+        enabled: true
+  cloud:
+    stream:
+      bindings:
+        sendCommunication-out-0:
+          destination: send-communication
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    connection-timeout: 10s
+server:
+  port: 9094
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: "http://localhost:8091/eureka"
